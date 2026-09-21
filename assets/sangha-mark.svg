@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 654 698" role="img" aria-labelledby="t d">
+<title id="t">SANGHA mark</title><desc id="d">Tall nested triangular line mark with a central fingerprint-like witness glyph.</desc>
+<rect width="654" height="698" fill="#f4f3ef"/>
+<g fill="none" stroke="#0b0c0c" stroke-width="2.3" stroke-linejoin="miter">
+  <path d="M327 26 L623 622 L31 622 Z"/>
+  <path d="M327 39 L612 614 L42 614 Z"/>
+  <path d="M327 52 L601 606 L53 606 Z"/>
+  <path d="M327 65 L590 598 L64 598 Z"/>
+  <path d="M327 78 L579 590 L75 590 Z"/>
+  <path d="M327 91 L568 582 L86 582 Z"/>
+  <path d="M327 104 L557 574 L97 574 Z"/>
+  <path d="M327 117 L546 566 L108 566 Z"/>
+  <path d="M327 130 L535 558 L119 558 Z"/>
+  <path d="M327 143 L524 550 L130 550 Z"/>
+  <path d="M327 156 L513 542 L141 542 Z"/>
+  <path d="M327 169 L502 534 L152 534 Z"/>
+  <path d="M327 182 L491 526 L163 526 Z"/>
+  <path d="M327 195 L480 518 L174 518 Z"/>
+  <path d="M327 208 L469 510 L185 510 Z"/>
+  <path d="M327 221 L458 502 L196 502 Z"/>
+  <path d="M327 234 L447 494 L207 494 Z"/>
+  <path d="M327 247 L436 486 L218 486 Z"/>
+</g>
+<g fill="none" stroke="#0e2a44" stroke-width="3">
+  <path d="M327 17 L632 631 L22 631 Z"/>
+  <path d="M327 31 L619 620 L35 620 Z"/>
+</g>
+<path d="M327 286 L410 468 L244 468 Z" fill="#f4f3ef" stroke="#0b0c0c" stroke-width="2"/>
+<g transform="translate(327 404)" fill="none" stroke="#0b0c0c" stroke-width="2.2" stroke-linecap="round">
+  <path d="M-34 26 V-2 A34 34 0 0 1 34 -2 V26"/>
+  <path d="M-29 31 V-4 A29 29 0 0 1 29 -4 V31"/>
+  <path d="M-24 36 V-6 A24 24 0 0 1 24 -6 V36"/>
+  <path d="M-19 41 V-8 A19 19 0 0 1 19 -8 V41"/>
+  <path d="M-14 45 V-10 A14 14 0 0 1 14 -10 V45"/>
+  <path d="M-9 47 V-10 A9 9 0 0 1 9 -10 V47"/>
+  <path d="M-4 49 V-8 A4 4 0 0 1 4 -8 V49"/>
+  <path d="M-34 9 C-24 2 -16 4 -10 12"/>
+  <path d="M34 9 C24 2 16 4 10 12"/>
+</g>
+</svg>
