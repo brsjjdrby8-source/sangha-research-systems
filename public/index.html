@@ -1,329 +1,205 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SANGHA Research Systems — independent research systems engineering for scientific inference, experimental design, and theoretical & computational medicine." />
-  <meta name="theme-color" content="#efefed" />
-  <title>SANGHA Research Systems</title>
-  <style>
-    :root{
-      --paper:#efefed;
-      --ink:#090a0a;
-      --blue:#0e2a44;
-      --muted:#62666a;
-      --hair:rgba(9,10,10,.19);
-      --pad:clamp(18px,2.35vw,42px);
-      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-      --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:var(--paper)}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
-    a{color:inherit;text-decoration-thickness:1px;text-underline-offset:5px}
-    ::selection{background:var(--ink);color:var(--paper)}
-    .frame{margin:0 clamp(0px,1.1vw,22px);border-left:1px solid var(--hair);border-right:1px solid var(--hair)}
-    .topbar{
-      height:42px;position:sticky;top:0;z-index:40;display:grid;
-      grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);
-      border-bottom:1px solid var(--hair);background:rgba(239,239,237,.94);backdrop-filter:blur(12px)
-    }
-    .topbar .brand,.topbar .meta{font:650 9px/1 var(--mono);letter-spacing:.23em;text-transform:uppercase}
-    .topbar .meta{text-align:right;color:var(--muted)}
-    .topbar .center{font:500 8px/1 var(--mono);letter-spacing:.18em;color:var(--muted)}
-
-    /* HERO — hard frame, soft field */
-    .hero{
-      min-height:calc(100vh - 42px);
-      display:grid;grid-template-columns:minmax(170px,22%) minmax(0,56%) minmax(190px,22%);
-      grid-template-rows:minmax(560px,1fr) auto;
-      border-bottom:1px solid var(--hair);position:relative;overflow:hidden
-    }
-    .hero::before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background:
-        linear-gradient(to right, transparent calc(22% - .5px), var(--hair) 22%, transparent calc(22% + .5px)),
-        linear-gradient(to right, transparent calc(78% - .5px), var(--hair) 78%, transparent calc(78% + .5px)),
-        repeating-linear-gradient(to bottom, transparent 0 83px, rgba(9,10,10,.045) 84px);
-      z-index:0
-    }
-    .hero-left,.hero-right,.hero-mark,.hero-word{position:relative;z-index:2}
-    .hero-left{padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between}
-    .hero-left ol{list-style:none;padding:0;margin:0}
-    .hero-left li{font:550 9px/1.95 var(--mono);letter-spacing:.19em;text-transform:uppercase;color:#42464a}
-    .hero-left li::before{content:attr(data-n) " / ";color:#8d9093}
-    .motto{font:560 10px/1.7 var(--mono);letter-spacing:.17em;text-transform:uppercase;max-width:13ch}
-    .motto::before{content:"";display:block;width:28px;border-top:1px solid var(--ink);margin-bottom:18px}
-
-    .hero-mark{display:grid;place-items:center;min-width:0;padding:46px 2vw 20px;isolation:isolate}
-    .hero-mark::before,.hero-mark::after{
-      content:"";position:absolute;left:50%;top:50%;width:min(66vw,720px);aspect-ratio:1/1;
-      border:1px solid rgba(14,42,68,.09);transform:translate(-50%,-48%) rotate(45deg);pointer-events:none
-    }
-    .hero-mark::after{width:min(52vw,560px);border-color:rgba(9,10,10,.055);transform:translate(-50%,-48%) rotate(45deg)}
-    #trace{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-    .markwrap{
-      width:min(74%,640px);aspect-ratio:654/698;display:flex;align-items:center;justify-content:center;
-      transform:translate3d(calc(var(--mx,0)*2px),calc(var(--my,0)*1px),0);transition:transform .25s linear
-    }
-    .markwrap img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;user-select:none}
-    .vertical-note{position:absolute;left:12px;bottom:18px;writing-mode:vertical-rl;transform:rotate(180deg);font:500 8px/1 var(--mono);letter-spacing:.15em;color:var(--muted)}
-
-    .hero-right{padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between}
-    .logic{font:500 10px/1.55 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-    .logic strong{display:block;color:var(--ink);font-weight:700;margin-bottom:5px}
-    .hero-desc{font:500 10px/1.7 var(--mono);letter-spacing:.08em;max-width:24ch}
-    .hero-desc::before{content:"";display:block;width:100%;border-top:1px solid var(--ink);margin-bottom:17px}
-    .hero-scroll{font:500 8px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-
-    .hero-word{
-      grid-column:1/-1;border-top:1px solid var(--hair);
-      display:grid;grid-template-columns:22% 56% 22%;align-items:end;min-height:185px
-    }
-    .hero-word .blank{height:100%;border-right:1px solid var(--hair)}
-    .wordblock{padding:22px var(--pad) 24px;min-width:0}
-    .wordmark{
-      font-size:clamp(62px,8.2vw,158px);font-weight:360;line-height:.72;letter-spacing:.055em;white-space:nowrap
-    }
-    .wordmark .and{font-weight:280;display:inline-block;transform:scaleX(.93);transform-origin:center}
-    .submark{margin-top:22px;font-size:clamp(15px,1.55vw,27px);letter-spacing:.34em;text-transform:uppercase;line-height:1.15}
-    .wordnote{
-      height:100%;border-left:1px solid var(--hair);padding:25px var(--pad);
-      display:flex;align-items:flex-end;font:500 9px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)
-    }
-
-    /* common sections */
-    .section{display:grid;grid-template-columns:minmax(170px,22%) minmax(0,78%);border-bottom:1px solid var(--hair)}
-    .section-label{padding:var(--pad);border-right:1px solid var(--hair);font:650 9px/1.55 var(--mono);letter-spacing:.19em;text-transform:uppercase}
-    .section-label .n{display:block;color:var(--muted);margin-bottom:10px}
-    .section-body{padding:clamp(55px,7vw,116px) var(--pad)}
-    .headline-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:clamp(40px,7vw,120px);align-items:start}
-    .section h2{font-size:clamp(54px,6.5vw,116px);font-weight:360;letter-spacing:-.06em;line-height:.92;margin:0;max-width:8.5ch}
-    .lede{max-width:900px;font-size:clamp(20px,2.15vw,34px);line-height:1.2;letter-spacing:-.03em;margin:48px 0 0}
-    .axioms{border-top:1px solid var(--ink);font:500 10px/1.55 var(--mono);letter-spacing:.08em}
-    .axiom{display:grid;grid-template-columns:54px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--hair)}
-    .axiom .id{color:var(--muted)}
-    .axiom b{font-weight:700;text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:4px}
-
-    .pipeline{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--hair);margin-top:70px}
-    .pipeline div{min-height:118px;padding:13px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);font:650 9px/1.4 var(--mono);letter-spacing:.15em;text-transform:uppercase;position:relative}
-    .pipeline div::after{content:"∧";position:absolute;right:-9px;top:50%;transform:translateY(-50%);background:var(--paper);padding:3px;z-index:3;font-size:12px}
-    .pipeline div:last-child::after{display:none}
-    .pipeline .idx{display:block;color:var(--muted);margin-bottom:37px}
-
-    /* public objects */
-    .objects-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.35fr);gap:30px;align-items:end;margin-bottom:56px}
-    .objects-head h2{max-width:10ch}
-    .objects-head .side{font:500 10px/1.65 var(--mono);color:var(--muted);letter-spacing:.08em}
-    .objects{border-top:1px solid var(--ink)}
-    .object{display:grid;grid-template-columns:82px minmax(0,1fr) minmax(230px,.42fr) 118px;gap:22px;padding:25px 0;border-bottom:1px solid var(--hair);align-items:start}
-    .object .id,.object .status{font:550 9px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-    .object h3{font-size:clamp(25px,2.6vw,43px);font-weight:380;letter-spacing:-.04em;line-height:1.02;margin:0}
-    .object p{margin:1px 0 0;font:500 10px/1.65 var(--mono);color:#45494d}
-    .object .status{text-align:right;color:var(--ink)}
-
-    .conjunction{
-      margin-top:68px;border:1px solid var(--hair);min-height:250px;position:relative;overflow:hidden;
-      display:grid;place-items:center
-    }
-    .conjunction .glyph{font-size:clamp(190px,28vw,420px);line-height:.7;font-weight:200;color:rgba(9,10,10,.045);transform:scaleX(.9)}
-    .conjunction .caption{position:absolute;left:var(--pad);right:var(--pad);bottom:20px;display:flex;justify-content:space-between;gap:30px;font:550 9px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase}
-    .conjunction .caption span:last-child{color:var(--muted);text-align:right}
-
-    /* contact */
-    .contact{display:grid;grid-template-columns:minmax(170px,22%) minmax(0,56%) minmax(230px,22%);min-height:500px}
-    .contact > div{padding:var(--pad)}
-    .contact .left,.contact .mid{border-right:1px solid var(--hair)}
-    .contact .left{font:650 9px/1.45 var(--mono);letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;justify-content:space-between}
-    .contact .mid{display:flex;flex-direction:column;justify-content:center}
-    .contact .mid .big{font-size:clamp(55px,6.7vw,125px);line-height:.84;letter-spacing:-.06em;font-weight:350;max-width:9ch}
-    .contact .mid .big .and{font-size:.72em;vertical-align:.08em;font-weight:240}
-    .contact .right{display:flex;flex-direction:column;justify-content:center;gap:10px;font:500 10px/1.55 var(--mono)}
-    .contact .right .name2{font-family:var(--sans);font-size:clamp(23px,2vw,34px);font-weight:500;letter-spacing:-.03em;margin-bottom:9px}
-    .tiny{font:500 8px/1.55 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-
-    @media (max-width:980px){
-      .topbar{grid-template-columns:1fr auto}.topbar .center{display:none}
-      .hero{grid-template-columns:86px 1fr;grid-template-rows:auto auto auto}
-      .hero::before{background:repeating-linear-gradient(to bottom,transparent 0 83px,rgba(9,10,10,.045) 84px)}
-      .hero-left{padding:18px 12px;border-right:1px solid var(--hair);grid-row:1}.hero-left li{font-size:8px;letter-spacing:.12em}.motto{display:none}
-      .hero-mark{grid-column:2;grid-row:1;min-height:62vh;padding:28px 14px}.markwrap{width:min(84%,560px)}
-      .hero-right{grid-column:1/-1;grid-row:2;border-top:1px solid var(--hair);padding:22px;min-height:190px}.hero-desc{max-width:42ch}
-      .hero-word{grid-row:3;grid-template-columns:1fr}.hero-word .blank,.wordnote{display:none}.wordblock{padding:28px 20px 34px}.wordmark{font-size:clamp(58px,15.5vw,110px)}
-      .section{grid-template-columns:86px 1fr}.section-label{padding:18px 12px}.section-body{padding:56px 22px}
-      .headline-grid,.objects-head{grid-template-columns:1fr}.axioms{margin-top:10px}
-      .pipeline{grid-template-columns:1fr}.pipeline div{min-height:auto}.pipeline .idx{margin-bottom:12px}.pipeline div::after{display:none}
-      .object{grid-template-columns:56px 1fr}.object p,.object .status{grid-column:2}.object .status{text-align:left}
-      .contact{grid-template-columns:86px 1fr}.contact .mid{border-right:0}.contact .right{grid-column:1/-1;border-top:1px solid var(--hair);min-height:250px}.contact .left{padding:18px 12px}
-    }
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#trace{display:none}.markwrap{transform:none!important}}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="SANGHA Research Systems — independent research systems engineering for scientific inference, experimental design, and theoretical & computational medicine."/>
+<meta name="theme-color" content="#f5f5f3"/>
+<title>SANGHA Research Systems</title>
+<style>
+:root{
+  --paper:#f5f5f3;--ink:#0b0b0b;--blue:#0e2a44;--muted:#697078;--hair:#c7c9c8;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--pad:clamp(18px,2.2vw,34px)
+}
+*{box-sizing:border-box} html{background:var(--paper);scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+a{color:inherit;text-underline-offset:4px;text-decoration-thickness:1px} ::selection{background:var(--ink);color:var(--paper)}
+.shell{width:min(1500px,calc(100vw - 30px));margin:14px auto 48px;border:1px solid var(--hair);background:var(--paper)}
+.micro{font:600 9px/1.45 var(--mono);letter-spacing:.21em;text-transform:uppercase}
+.muted{color:var(--muted)}
+.rule{height:1px;background:var(--hair)}
+/* identity sheet hero */
+.identity{
+  display:grid;grid-template-columns:56% 44%;grid-template-rows:auto minmax(720px,78vh) auto;
+  min-height:100vh
+}
+.identity-head{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;padding:16px 26px 13px;border-bottom:1px solid var(--hair)}
+.identity-head .center{text-align:center}.identity-head .right{text-align:right}
+.primary{position:relative;border-right:1px solid var(--hair);padding:clamp(20px,2.5vw,40px);display:grid;grid-template-columns:24% 76%;grid-template-rows:1fr auto;overflow:hidden}
+.primary .rail{padding-top:22px;display:flex;flex-direction:column;justify-content:space-between;z-index:2}
+.primary .rail .stack{display:grid;gap:11px}
+.primary .rail .motto{max-width:12ch;line-height:1.75}
+.primary .rail .motto:before{content:"";display:block;width:30px;border-top:1px solid var(--ink);margin:0 0 18px}
+.hero-mark{position:relative;display:grid;place-items:center;min-height:540px;isolation:isolate}
+.hero-mark img{width:min(83%,650px);height:auto;display:block;mix-blend-mode:multiply;position:relative;z-index:2}
+.hero-mark:before{content:"";position:absolute;inset:8% 5%;background:
+  repeating-linear-gradient(90deg,transparent 0 82px,rgba(11,11,11,.035) 83px),
+  repeating-linear-gradient(0deg,transparent 0 82px,rgba(11,11,11,.035) 83px);z-index:0}
+.hero-mark canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.primary-lockup{grid-column:1/-1;padding-top:14px;border-top:1px solid var(--ink)}
+.primary-lockup .wordmark{font-size:clamp(54px,7.6vw,126px);line-height:.78;letter-spacing:.15em;font-weight:320;white-space:nowrap}
+.primary-lockup .wordmark .a{display:inline-block;transform:scaleX(.92);font-weight:250}
+.primary-lockup .sub{font-size:clamp(16px,1.7vw,29px);letter-spacing:.34em;text-transform:uppercase;margin-top:22px}
+.primary-lockup .descriptor{border-top:1px solid var(--hair);margin-top:22px;padding-top:20px;max-width:62ch;font:500 11px/1.75 var(--mono);letter-spacing:.07em;color:#45494d}
+.spec{padding:clamp(20px,2.3vw,34px);display:grid;grid-template-rows:auto auto auto auto;gap:22px}
+.spec-title{display:flex;justify-content:space-between;align-items:start;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+.spec-title .big{font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+.variations{padding-bottom:18px;border-bottom:1px solid var(--hair)}
+.var-grid{display:grid;grid-template-columns:1.35fr 1fr .75fr;gap:18px;align-items:end;margin-top:22px}
+.spec-card{text-align:center}
+.spec-card img{max-width:100%;height:165px;object-fit:contain;display:block;margin:0 auto 12px;mix-blend-mode:multiply}
+.spec-card.icon img{height:120px}
+.spec-card .ratio{margin-top:5px;color:var(--muted)}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:18px;border-bottom:1px solid var(--hair)}
+.tech{min-width:0}
+.clearspace{height:180px;border:1px solid var(--hair);position:relative;display:grid;place-items:center;margin-top:13px;background:
+ linear-gradient(90deg,transparent 49.8%,var(--hair) 50%,transparent 50.2%),
+ linear-gradient(0deg,transparent 49.8%,var(--hair) 50%,transparent 50.2%)}
+.clearspace img{height:112px;mix-blend-mode:multiply}
+.clearspace b{position:absolute;font:600 8px var(--mono);color:var(--muted)} .clearspace .tl{top:10px;left:10px}.clearspace .tr{top:10px;right:10px}.clearspace .bl{bottom:10px;left:10px}.clearspace .br{bottom:10px;right:10px}
+.sizes{display:flex;align-items:end;justify-content:space-around;height:180px;margin-top:13px;border-bottom:1px solid var(--hair);padding-bottom:22px}
+.sizes .s24 img{width:76px}.sizes .s16 img{width:42px}.sizes figure{margin:0;text-align:center}.sizes figcaption{margin-top:12px}
+.palette{padding-bottom:18px;border-bottom:1px solid var(--hair)}
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:12px}
+.swatch .chip{height:54px;border:1px solid var(--hair);margin-bottom:8px}.swatch .black{background:#0b0b0b}.swatch .paper{background:#f5f5f3}.swatch .blue{background:#0e2a44}
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.type-grid .sample{border-right:1px solid var(--hair);padding-right:20px}.type-grid .sample:last-child{border-right:0}
+.type-grid .sample .display{font-size:26px;letter-spacing:.22em;margin-top:10px}.type-grid .sample p{font:500 11px/1.55 var(--mono);margin:10px 0 0}
+/* application strip */
+.apps{grid-column:1/-1;border-top:1px solid var(--hair);display:grid;grid-template-columns:1fr 1fr 1.18fr}
+.app{padding:16px 20px 20px;border-right:1px solid var(--hair)}.app:last-child{border-right:0}
+.app-window{margin-top:10px;min-height:190px;border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;position:relative}
+.app-window.dark{background:#09151c;color:white}.app-window.light{background:#f8f8f6}
+.lockup-mini{text-align:center}.lockup-mini img{height:102px;mix-blend-mode:multiply}.dark .lockup-mini img{filter:invert(1) grayscale(1);mix-blend-mode:screen}
+.lockup-mini .wm{font-size:29px;letter-spacing:.23em;margin-top:3px}.lockup-mini .rs{font:600 9px/1.4 var(--mono);letter-spacing:.28em;text-transform:uppercase}
+.email-sig{display:grid;grid-template-columns:100px 1px 1fr;gap:20px;align-items:center;width:min(100%,520px);padding:22px}.email-sig img{width:92px}.email-sig .vr{height:120px;background:var(--hair)}.email-sig .nm{font-size:22px;margin-bottom:5px}.email-sig .org{font:500 11px/1.6 var(--mono);letter-spacing:.08em}.email-sig a{display:block;font:500 11px/1.65 var(--mono)}
+/* research body */
+.research{border-top:1px solid var(--ink);display:grid;grid-template-columns:22% 78%}
+.side-label{padding:var(--pad);border-right:1px solid var(--hair);min-height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.body{padding:clamp(55px,7vw,110px) var(--pad)}
+.body h2{font-size:clamp(48px,6vw,98px);font-weight:350;letter-spacing:-.055em;line-height:.92;margin:0;max-width:10ch}
+.lede{font-size:clamp(20px,2vw,32px);line-height:1.2;letter-spacing:-.025em;max-width:860px;margin:42px 0 0}
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--hair);margin-top:60px}
+.pipeline div{min-height:116px;padding:13px;border-right:1px solid var(--hair);border-bottom:1px solid var(--hair);font:650 9px/1.45 var(--mono);letter-spacing:.15em;text-transform:uppercase;position:relative}
+.pipeline div:after{content:"∧";position:absolute;right:-8px;top:50%;transform:translateY(-50%);background:var(--paper);padding:2px 3px;z-index:2}.pipeline div:last-child:after{display:none}
+.pipeline .i{display:block;color:var(--muted);margin-bottom:34px}
+.objects{border-top:1px solid var(--ink);margin-top:56px}
+.object{display:grid;grid-template-columns:78px minmax(0,1fr) minmax(240px,.5fr) 128px;gap:22px;padding:23px 0;border-bottom:1px solid var(--hair);align-items:start}
+.object .id,.object .status{font:550 9px/1.5 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.object h3{font-size:clamp(24px,2.4vw,39px);font-weight:380;letter-spacing:-.035em;line-height:1.05;margin:0}.object p{font:500 10px/1.65 var(--mono);margin:1px 0 0;color:#45494d}.object .status{text-align:right;color:var(--ink)}
+.contact{display:grid;grid-template-columns:22% 52% 26%;min-height:430px;border-top:1px solid var(--ink)}
+.contact>div{padding:var(--pad)}.contact .left,.contact .mid{border-right:1px solid var(--hair)}
+.contact .left{display:flex;flex-direction:column;justify-content:space-between}
+.contact .mid{display:flex;align-items:center}.contact .big{font-size:clamp(48px,5.5vw,96px);font-weight:350;letter-spacing:-.05em;line-height:.88}.contact .big .and{font-size:.72em}
+.contact .right{display:flex;flex-direction:column;justify-content:center;font:500 11px/1.65 var(--mono)}.contact .right .name{font:500 28px/1.1 var(--sans);letter-spacing:-.03em;margin-bottom:9px}
+@media(max-width:980px){
+  .shell{width:calc(100vw - 12px);margin:6px auto 24px}.identity{grid-template-columns:1fr;grid-template-rows:auto auto auto auto}.identity-head{grid-template-columns:1fr auto}.identity-head .right{display:none}
+  .primary{border-right:0;border-bottom:1px solid var(--hair);grid-template-columns:82px 1fr;padding:14px}.hero-mark{min-height:58vh}.primary-lockup .wordmark{font-size:clamp(50px,15vw,95px);letter-spacing:.09em}.primary-lockup .descriptor{font-size:10px}
+  .spec{padding:24px 16px}.var-grid{grid-template-columns:1fr 1fr 1fr}.spec-card img{height:115px}.tech-grid{grid-template-columns:1fr}.apps{grid-template-columns:1fr}.app{border-right:0;border-bottom:1px solid var(--hair)}
+  .research{grid-template-columns:86px 1fr}.side-label{padding:16px 11px}.body{padding:50px 20px}.pipeline{grid-template-columns:1fr}.pipeline div{min-height:auto}.pipeline .i{margin-bottom:10px}.pipeline div:after{display:none}
+  .object{grid-template-columns:52px 1fr}.object p,.object .status{grid-column:2}.object .status{text-align:left}.contact{grid-template-columns:86px 1fr}.contact .mid{border-right:0}.contact .right{grid-column:1/-1;border-top:1px solid var(--hair);min-height:210px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#hero-lines{display:none}}
+</style>
 </head>
 <body>
-  <main class="frame">
-    <header class="topbar">
-      <div class="brand">SANGHA Research Systems</div>
-      <div class="center">Specification / Grammar / Execution</div>
-      <div class="meta">Independent · 2026</div>
+<main class="shell">
+  <section class="identity" id="identity">
+    <header class="identity-head">
+      <div class="micro">SANGHA Research Systems</div>
+      <div class="micro center">Identity System v1.0<br><span class="muted">2026.09</span></div>
+      <div class="micro right">Structure&nbsp;&nbsp;&nbsp; Intelligence&nbsp;&nbsp;&nbsp; Action</div>
     </header>
 
-    <section class="hero" id="top">
-      <aside class="hero-left">
-        <ol aria-label="Epistemic sequence">
-          <li data-n="01">Evidence</li>
-          <li data-n="02">Representation</li>
-          <li data-n="03">Counterfactuals</li>
-          <li data-n="04">Experiment</li>
-          <li data-n="05">Audit</li>
-        </ol>
-        <div class="motto">For a more coherent tomorrow.</div>
+    <div class="primary">
+      <aside class="rail">
+        <div class="stack micro muted">
+          <span>Evidence</span><span>Representation</span><span>Counterfactuals</span><span>Experiment</span><span>Audit</span>
+        </div>
+        <div class="motto micro">For a more coherent tomorrow</div>
       </aside>
-
-      <div class="hero-mark" id="markstage">
-        <canvas id="trace" aria-hidden="true"></canvas>
-        <div class="markwrap"><img src="assets/sangha-mark.svg" alt="SANGHA nested triangular mark with central witness glyph" /></div>
-        <div class="vertical-note">STRUCTURE / TRANSFORMATION / WITNESS</div>
+      <div class="hero-mark" id="hero-mark">
+        <canvas id="hero-lines" aria-hidden="true"></canvas>
+        <img src="assets/sangha-mark.svg" alt="SANGHA primary nested triangular mark">
       </div>
-
-      <aside class="hero-right">
-        <div class="logic"><strong>Λ / ∧ = AND</strong>recursive conjunction<br/>as compositional grammar</div>
-        <div class="hero-desc">Independent research systems engineering for scientific inference, experimental design, and theoretical &amp; computational medicine.</div>
-        <div class="hero-scroll">Scroll ↓ · geometry remains continuous</div>
-      </aside>
-
-      <div class="hero-word">
-        <div class="blank" aria-hidden="true"></div>
-        <div class="wordblock">
-          <div class="wordmark" aria-label="SANGHA">S<span class="and">Λ</span>NGH<span class="and">Λ</span></div>
-          <div class="submark">Research Systems</div>
-        </div>
-        <div class="wordnote">structure ∧ intelligence ∧ action</div>
+      <div class="primary-lockup">
+        <div class="wordmark" aria-label="SANGHA">S<span class="a">Λ</span>NGH<span class="a">Λ</span></div>
+        <div class="sub">Research Systems</div>
+        <div class="descriptor">INDEPENDENT RESEARCH SYSTEMS ENGINEERING<br>Computational infrastructure for scientific inference, experimental design, and theoretical &amp; computational medicine.</div>
       </div>
-    </section>
+    </div>
 
-    <section class="section" id="system">
-      <div class="section-label"><span class="n">01 / System</span>Research as structure.</div>
-      <div class="section-body">
-        <div class="headline-grid">
-          <div>
-            <h2>Make the inferential machinery explicit.</h2>
-            <p class="lede">SANGHA connects heterogeneous evidence to explicit representations, executable counterfactuals, discriminating experiments, and auditable scientific action.</p>
-          </div>
-          <div class="axioms" aria-label="SANGHA architecture">
-            <div class="axiom"><span class="id">A1</span><span><b>T&amp;CM specifies</b>the epistemic machine.</span></div>
-            <div class="axiom"><span class="id">A2</span><span><b>Ontology consumes</b>evidence as a typed grammar.</span></div>
-            <div class="axiom"><span class="id">A3</span><span><b>SAGA executes</b>the inferential trace.</span></div>
-            <div class="axiom"><span class="id">A4</span><span><b>Experiment compiles</b>the next discriminating action.</span></div>
-          </div>
-        </div>
-        <div class="pipeline" aria-label="SANGHA epistemic sequence">
-          <div><span class="idx">01</span>Evidence</div>
-          <div><span class="idx">02</span>Representation</div>
-          <div><span class="idx">03</span>Counterfactuals</div>
-          <div><span class="idx">04</span>Experiment</div>
-          <div><span class="idx">05</span>Audit</div>
+    <aside class="spec">
+      <div class="spec-title">
+        <div class="micro big">Mark Variations</div>
+        <div class="micro muted">SR / IDS-01</div>
+      </div>
+      <div class="variations">
+        <div class="var-grid">
+          <div class="spec-card"><img src="assets/sangha-mark.svg" alt="Primary mark"><div class="micro">Primary Mark</div><div class="micro ratio">Vertical proportions</div></div>
+          <div class="spec-card"><img src="assets/sangha-mark-simplified.svg" alt="Simplified mark"><div class="micro">Simplified Mark</div><div class="micro ratio">Medium / small</div></div>
+          <div class="spec-card icon"><img src="assets/sangha-icon.svg" alt="SANGHA witness icon"><div class="micro">Icon / Favicon</div><div class="micro ratio">Square</div></div>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="work">
-      <div class="section-label"><span class="n">02 / Objects</span>Public research objects.</div>
-      <div class="section-body">
-        <div class="objects-head">
-          <h2>Specification. Grammar. Execution.</h2>
-          <div class="side">One research system seen from three complementary surfaces. Each object becomes independently inspectable as it matures.</div>
-        </div>
-        <div class="objects">
-          <article class="object">
-            <div class="id">SR / 001</div>
-            <h3>Theoretical &amp; Computational Medicine</h3>
-            <p>Typed evidence, counterfactuals, experiment selection, provenance, and inferential audit as an explicit epistemic layer.</p>
-            <div class="status">Preprint · in preparation</div>
-          </article>
-          <article class="object">
-            <div class="id">SR / 002</div>
-            <h3>Consuming Grammar</h3>
-            <p>A machine-readable ontology that determines what evidence can mean, what it can attach to, and which compositions it licenses.</p>
-            <div class="status">Specification · active</div>
-          </article>
-          <article class="object">
-            <div class="id">SR / 003</div>
-            <h3>SAGA</h3>
-            <p>A data-analytic inferential narrative: evidence is consumed, hypotheses branch and reconverge, and the next experiment is compiled.</p>
-            <div class="status">Research program · active</div>
-          </article>
-        </div>
-        <div class="conjunction">
-          <div class="glyph">∧</div>
-          <div class="caption">
-            <span>evidence ∧ representation ∧ theory ∧ computation ∧ experiment</span>
-            <span>lawful composition without collapse</span>
-          </div>
-        </div>
+      <div class="tech-grid">
+        <div class="tech"><div class="micro">Clear Space</div><div class="clearspace"><b class="tl">X</b><b class="tr">X</b><b class="bl">X</b><b class="br">X</b><img src="assets/sangha-mark-simplified.svg" alt=""></div></div>
+        <div class="tech"><div class="micro">Minimum Sizes</div><div class="sizes"><figure class="s24"><img src="assets/sangha-mark-simplified.svg" alt=""><figcaption class="micro muted">24 px / screen</figcaption></figure><figure class="s16"><img src="assets/sangha-icon.svg" alt=""><figcaption class="micro muted">16 px / icon</figcaption></figure></div></div>
       </div>
-    </section>
-
-    <footer class="contact" id="contact">
-      <div class="left"><span>03 / Contact</span><span class="tiny">New York / distributed</span></div>
-      <div class="mid"><div class="big">Structure <span class="and">∧</span><br/>Intelligence <span class="and">∧</span><br/>Action.</div></div>
-      <div class="right">
-        <div class="name2">Thomas Gross, PhD</div>
-        <div>SANGHA Research Systems</div>
-        <div><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a></div>
-        <div><a href="https://sangharesearch.systems">sangharesearch.systems</a></div>
-        <div class="tiny" style="margin-top:28px">Research systems engineering · scientific inference · experimental design</div>
+      <div class="palette"><div class="micro">Color Palette</div><div class="swatches">
+        <div class="swatch"><div class="chip black"></div><div class="micro">SANGHA Black</div><div class="micro muted">#0B0B0B</div></div>
+        <div class="swatch"><div class="chip paper"></div><div class="micro">Paper</div><div class="micro muted">#F5F5F3</div></div>
+        <div class="swatch"><div class="chip blue"></div><div class="micro">Accent Blue</div><div class="micro muted">#0E2A44</div></div>
+      </div></div>
+      <div class="type-grid">
+        <div class="sample"><div class="micro muted">Headings</div><div class="micro">Helvetica Neue / system grotesk</div><div class="display">SΛNGHΛ</div><div class="micro muted">Tracking +200</div></div>
+        <div class="sample"><div class="micro muted">Body / UI</div><div class="micro">System Mono</div><p>Research as structure.<br>Intelligence as method.<br>Action as result.</p></div>
       </div>
-    </footer>
-  </main>
+    </aside>
 
+    <div class="apps">
+      <div class="app"><div class="micro">Dark Mode / Example</div><div class="app-window dark"><div class="lockup-mini"><img src="assets/sangha-mark-simplified.svg" alt=""><div class="wm">SΛNGHΛ</div><div class="rs">Research Systems</div></div></div></div>
+      <div class="app"><div class="micro">Light Mode / Example</div><div class="app-window light"><div class="lockup-mini"><img src="assets/sangha-mark-simplified.svg" alt=""><div class="wm">SΛNGHΛ</div><div class="rs">Research Systems</div></div></div></div>
+      <div class="app"><div class="micro">Email Signature / Example</div><div class="app-window light"><div class="email-sig"><img src="assets/sangha-mark-simplified.svg" alt=""><div class="vr"></div><div><div class="nm">Thomas Gross, PhD</div><div class="org">SΛNGHΛ Research Systems</div><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a><a href="https://sangharesearch.systems">sangharesearch.systems</a></div></div></div></div>
+    </div>
+  </section>
+
+  <section class="research" id="system">
+    <aside class="side-label"><div class="micro"><span class="muted">01 / SYSTEM</span><br><br>Research as structure.</div><div class="micro muted">Specification<br>Grammar<br>Execution</div></aside>
+    <div class="body">
+      <h2>Make the inferential machinery explicit.</h2>
+      <p class="lede">SANGHA connects heterogeneous evidence to explicit representations, executable counterfactuals, discriminating experiments, and auditable scientific action.</p>
+      <div class="pipeline"><div><span class="i">01</span>Evidence</div><div><span class="i">02</span>Representation</div><div><span class="i">03</span>Counterfactuals</div><div><span class="i">04</span>Experiment</div><div><span class="i">05</span>Audit</div></div>
+    </div>
+  </section>
+
+  <section class="research" id="objects">
+    <aside class="side-label"><div class="micro"><span class="muted">02 / OBJECTS</span><br><br>Public research objects.</div><div class="micro muted">T&amp;CM specifies.<br>Ontology consumes.<br>SAGA executes.</div></aside>
+    <div class="body">
+      <h2>Specification. Grammar. Execution.</h2>
+      <div class="objects">
+        <article class="object"><div class="id">SR / 001</div><h3>Theoretical &amp; Computational Medicine</h3><p>Typed evidence, counterfactuals, experiment selection, provenance, and inferential audit as an explicit epistemic layer.</p><div class="status">Preprint · in preparation</div></article>
+        <article class="object"><div class="id">SR / 002</div><h3>Consuming Grammar</h3><p>A machine-readable ontology that determines what evidence can mean, what it can attach to, and which compositions it licenses.</p><div class="status">Specification · active</div></article>
+        <article class="object"><div class="id">SR / 003</div><h3>SAGA</h3><p>A data-analytic inferential narrative: evidence is consumed, hypotheses branch and reconverge, and the next experiment is compiled.</p><div class="status">Research program · active</div></article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact">
+    <div class="left"><div class="micro">03 / CONTACT</div><div class="micro muted">New York / distributed</div></div>
+    <div class="mid"><div class="big">Structure <span class="and">∧</span><br>Intelligence <span class="and">∧</span><br>Action.</div></div>
+    <div class="right"><div class="name">Thomas Gross, PhD</div><div>SANGHA Research Systems</div><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a><a href="https://sangharesearch.systems">sangharesearch.systems</a></div>
+  </footer>
+</main>
 <script>
 (() => {
-  const stage=document.getElementById('markstage');
-  const canvas=document.getElementById('trace');
-  const ctx=canvas.getContext('2d');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let px=.5,py=.5,tx=.5,ty=.5,scrollPhase=0;
-
-  function resize(){
-    const r=stage.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
-    canvas.width=Math.max(1,Math.floor(r.width*d));
-    canvas.height=Math.max(1,Math.floor(r.height*d));
-    canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';
-    ctx.setTransform(d,0,0,d,0,0);
-  }
-  function polygon(cx,cy,r,phase){
-    const h=r*1.13,dx=(px-.5)*9*phase,dy=(py-.5)*5*(1-phase);
-    ctx.beginPath();
-    ctx.moveTo(cx+dx,cy-h*.72+dy);
-    ctx.lineTo(cx+r+dx,cy+h*.58+dy);
-    ctx.lineTo(cx-r+dx,cy+h*.58+dy);
-    ctx.closePath();
-  }
-  function draw(t){
-    const r=stage.getBoundingClientRect(),w=r.width,h=r.height;
-    ctx.clearRect(0,0,w,h);
-    px+=(tx-px)*.035;py+=(ty-py)*.035;
-    const cx=w*.5,cy=h*.49,base=Math.min(w*.46,h*.40);
-    for(let i=0;i<9;i++){
-      const p=i/8;
-      const drift=reduced?0:Math.sin(t*.00015+p*2.8+scrollPhase)*1.2;
-      ctx.lineWidth=.55;
-      ctx.strokeStyle='rgba(14,42,68,'+(0.035+(1-p)*.04)+')';
-      polygon(cx,cy,base*(1.18+p*.075)+drift,p);
-      ctx.stroke();
-    }
-    ctx.lineWidth=.45;ctx.strokeStyle='rgba(9,10,10,.045)';
-    for(let i=0;i<7;i++){
-      const y=h*(.18+i*.105),bend=(px-.5)*10*(i/7);
-      ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(w*.33,y+bend,w*.67,y-bend,w,y);ctx.stroke();
-    }
-    requestAnimationFrame(draw);
-  }
-  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;stage.style.setProperty('--mx',(tx-.5).toFixed(3));stage.style.setProperty('--my',(ty-.5).toFixed(3));});
-  stage.addEventListener('pointerleave',()=>{tx=ty=.5;stage.style.setProperty('--mx',0);stage.style.setProperty('--my',0);});
-  addEventListener('scroll',()=>{scrollPhase=scrollY*.0012},{passive:true});
-  addEventListener('resize',resize);
-  resize();requestAnimationFrame(draw);
+ const stage=document.getElementById('hero-mark'), canvas=document.getElementById('hero-lines'),ctx=canvas.getContext('2d');
+ if(!stage||!canvas)return; const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let tx=.5,ty=.5,x=.5,y=.5,s=0;
+ function resize(){const r=stage.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);canvas.width=Math.max(1,Math.floor(r.width*d));canvas.height=Math.max(1,Math.floor(r.height*d));canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';ctx.setTransform(d,0,0,d,0,0)}
+ function tri(cx,cy,r,p){const h=r*1.12,dx=(x-.5)*7*p,dy=(y-.5)*3*(1-p);ctx.beginPath();ctx.moveTo(cx+dx,cy-h*.72+dy);ctx.lineTo(cx+r+dx,cy+h*.58+dy);ctx.lineTo(cx-r+dx,cy+h*.58+dy);ctx.closePath()}
+ function draw(t){const r=stage.getBoundingClientRect(),w=r.width,h=r.height;ctx.clearRect(0,0,w,h);x+=(tx-x)*.035;y+=(ty-y)*.035;const base=Math.min(w*.42,h*.38),cx=w*.5,cy=h*.49;for(let i=0;i<8;i++){let p=i/7,d=reduced?0:Math.sin(t*.00012+p*3+s)*.9;ctx.lineWidth=.5;ctx.strokeStyle='rgba(14,42,68,'+(0.025+(1-p)*.03)+')';tri(cx,cy,base*(1.28+p*.085)+d,p);ctx.stroke()}requestAnimationFrame(draw)}
+ stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height});stage.addEventListener('pointerleave',()=>{tx=ty=.5});addEventListener('scroll',()=>s=scrollY*.001,{passive:true});addEventListener('resize',resize);resize();requestAnimationFrame(draw)
 })();
 </script>
 </body>
