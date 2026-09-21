@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="SANGHA Research Systems — independent research systems engineering for scientific inference, experimental design, and theoretical medicine." />
-  <meta name="theme-color" content="#f4f3ef" />
+  <meta name="theme-color" content="#f5f5f3" />
   <title>SANGHA Research Systems</title>
   <style>
     :root{
-      --paper:#f4f3ef;
+      --paper:#f5f5f3;
       --ink:#0b0c0c;
       --blue:#0e2a44;
       --muted:#62666a;
@@ -20,7 +20,7 @@
 
     *{box-sizing:border-box}
     html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}
-    body{font-family:var(--sans);overflow:hidden}
+    body{font-family:var(--sans);overflow:hidden;background:var(--paper)}
     a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
     ::selection{background:var(--ink);color:var(--paper)}
 
@@ -31,6 +31,7 @@
       margin:0 clamp(0px,1.5vw,24px);
       display:grid;
       grid-template-rows:43px minmax(0,1fr) 43px;
+      background:var(--paper);
     }
 
     .topbar{
@@ -40,7 +41,7 @@
       align-items:center;
       padding:12px var(--pad);
       border-bottom:1px solid var(--hair);
-      background:rgba(244,243,239,.96);
+      background:rgba(245,245,243,.96);
     }
     .topbar .brand,.topbar .meta{
       font:600 10px/1.2 var(--mono);
@@ -61,6 +62,7 @@
       display:grid;
       grid-template-columns:minmax(170px,.66fr) minmax(0,1.72fr) minmax(230px,.82fr);
       overflow:hidden;
+      background:var(--paper);
     }
     .hero>*{min-width:0}
 
@@ -110,6 +112,7 @@
       overflow:hidden;
       isolation:isolate;
       min-height:0;
+      background:var(--paper);
     }
     #field{
       position:absolute;
