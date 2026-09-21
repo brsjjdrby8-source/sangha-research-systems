@@ -4,7 +4,7 @@ A dependency-free static site. It can be served directly from GitHub Pages, Clou
 
 ## Files
 - `index.html` — all HTML, CSS, and motion code in one file
-- `assets/sangha-mark.jpg` — canonical vertical-proportion mark supplied by the user
+- `assets/sangha-mark.svg` — canonical vertical-proportion mark supplied by the user
 
 ## Local preview
 From this folder:
