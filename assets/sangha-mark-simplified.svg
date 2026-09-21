@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 654 698" role="img" aria-labelledby="t d">
+<title id="t">SANGHA simplified mark</title><desc id="d">Simplified tall triangular SANGHA mark with central witness glyph.</desc>
+<rect width="654" height="698" fill="#f5f5f3"/>
+<g fill="none" stroke-linejoin="miter">
+  <path d="M327 26 L623 622 L31 622 Z" stroke="#0e2a44" stroke-width="4"/>
+  <path d="M327 52 L601 606 L53 606 Z" stroke="#090a0a" stroke-width="4"/>
+  <path d="M327 83 L575 586 L79 586 Z" stroke="#090a0a" stroke-width="7"/>
+  <path d="M327 122 L542 558 L112 558 Z" stroke="#090a0a" stroke-width="11"/>
+  <path d="M327 178 L495 520 L159 520 Z" stroke="#090a0a" stroke-width="14"/>
+</g>
+<path d="M327 288 L409 468 L245 468 Z" fill="#f5f5f3" stroke="#090a0a" stroke-width="2.4"/>
+<g transform="translate(327 404)" fill="none" stroke="#090a0a" stroke-width="2.6" stroke-linecap="round">
+  <path d="M-34 26 V-2 A34 34 0 0 1 34 -2 V26"/>
+  <path d="M-28 32 V-4 A28 28 0 0 1 28 -4 V32"/>
+  <path d="M-22 38 V-6 A22 22 0 0 1 22 -6 V38"/>
+  <path d="M-16 44 V-8 A16 16 0 0 1 16 -8 V44"/>
+  <path d="M-10 48 V-9 A10 10 0 0 1 10 -9 V48"/>
+  <path d="M-4 50 V-7 A4 4 0 0 1 4 -7 V50"/>
+</g>
+</svg>
