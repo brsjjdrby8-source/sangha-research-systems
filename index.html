@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="SANGHA Research Systems — independent research systems engineering for scientific inference, experimental design, and theoretical medicine." />
   <meta name="theme-color" content="#efefed" />
+  <link rel="icon" href="assets/sangha-icon.svg" type="image/svg+xml" />
   <title>SANGHA Research Systems</title>
   <style>
     :root{
@@ -25,6 +26,7 @@
     ::selection{background:var(--ink);color:var(--paper)}
 
     .frame{
+      height:100vh;
       height:100svh;
       border-left:1px solid var(--hair);
       border-right:1px solid var(--hair);
@@ -232,6 +234,24 @@
       letter-spacing:.07em;
     }
 
+
+    @media (max-width:1180px) and (min-width:901px){
+      .hero{
+        grid-template-columns:minmax(145px,.56fr) minmax(0,1.55fr) minmax(250px,.94fr);
+      }
+      .rail{padding:24px 18px}
+      .rail li{font-size:9px;letter-spacing:.14em}
+      .rail .statement{font-size:10px}
+      .hero-copy{padding:24px}
+      .logic{font-size:10px}
+      .name{margin:10vh 0 0}
+      .wordmark{font-size:clamp(40px,4vw,56px);letter-spacing:.075em}
+      .submark{font-size:14px;letter-spacing:.26em}
+      .descriptor{font-size:10px;max-width:26ch}
+      .scrollcue{font-size:8px;letter-spacing:.15em}
+      .coordinates{font-size:8px}
+    }
+
     @media (max-width:900px){
       body{overflow:auto}
       .frame{
@@ -243,24 +263,39 @@
       .topbar{grid-template-columns:1fr auto}
       .topbar .center{display:none}
       .hero{
-        grid-template-columns:82px 1fr;
-        grid-template-rows:minmax(58svh,1fr) auto;
+        grid-template-columns:1fr;
+        grid-template-rows:auto minmax(52svh,1fr) auto;
       }
-      .rail{padding:16px 12px}
-      .rail li{font-size:8px;letter-spacing:.12em}
+      .rail{
+        padding:11px 14px;
+        border-right:0;
+        border-bottom:1px solid var(--hair);
+      }
+      .rail ol{
+        display:flex;
+        flex-wrap:wrap;
+        gap:4px 14px;
+      }
+      .rail li{
+        font-size:7.5px;
+        line-height:1.45;
+        letter-spacing:.1em;
+        white-space:nowrap;
+      }
       .rail .statement{display:none}
-      .markstage{min-height:58svh}
-      .markwrap{width:min(82%,560px)}
+      .markstage{min-height:52svh}
+      .markwrap{width:min(76%,520px)}
+      .coordinates{display:none}
       .hero-copy{
-        grid-column:1/-1;
+        grid-column:1;
         border-left:0;
         border-top:1px solid var(--hair);
-        padding:22px;
-        min-height:260px;
+        padding:20px;
+        min-height:250px;
       }
       .name{margin:0}
-      .wordmark{font-size:clamp(52px,15vw,88px)}
-      .descriptor{max-width:42ch}
+      .wordmark{font-size:clamp(42px,13.5vw,72px);letter-spacing:.075em}
+      .descriptor{max-width:42ch;font-size:10px}
       .footer{
         padding:10px 13px;
         white-space:normal;
@@ -338,6 +373,7 @@
 <script>
 (() => {
   const canvas = document.getElementById('field');
+  if (!canvas || getComputedStyle(canvas).display === 'none') return;
   const stage = document.getElementById('markstage');
   const ctx = canvas.getContext('2d');
   let mx = .5, my = .5, targetX = .5, targetY = .5;
