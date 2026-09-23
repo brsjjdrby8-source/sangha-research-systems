@@ -1,0 +1,20 @@
+{
+  "schema": "sangha.geometry.labels.v1",
+  "unit": "um",
+  "observation": "section_2d",
+  "fields": [
+    {
+      "specimen_id": "s01",
+      "field_id": "f01",
+      "image": "labels.npy",
+      "pixel_size_x": 0.3,
+      "pixel_size_y": 0.4,
+      "frame": [
+        4,
+        4,
+        28,
+        28
+      ]
+    }
+  ]
+}

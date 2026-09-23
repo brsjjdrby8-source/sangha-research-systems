@@ -1,0 +1,23 @@
+python3 -m unittest discover -s tests -v
+test_anisotropic_calibration (test_geometry.Tests.test_anisotropic_calibration) ... ok
+test_circle_polygon_convergence (test_geometry.Tests.test_circle_polygon_convergence) ... ok
+test_contracts (test_geometry.Tests.test_contracts) ... ok
+test_degenerate (test_geometry.Tests.test_degenerate) ... ok
+test_duplicate (test_geometry.Tests.test_duplicate) ... ok
+test_duplicating_objects_does_not_add_independence (test_geometry.Tests.test_duplicating_objects_does_not_add_independence) ... ok
+test_known_moments (test_geometry.Tests.test_known_moments) ... ok
+test_pixel_cell_adapter_and_border (test_geometry.Tests.test_pixel_cell_adapter_and_border) ... ok
+test_receipt_tamper_and_replay (test_geometry.Tests.test_receipt_tamper_and_replay) ... ok
+test_rectangle_analytic (test_geometry.Tests.test_rectangle_analytic) ... ok
+test_reference_directional_parity (test_geometry.Tests.test_reference_directional_parity) ... ok
+test_rotation_translation (test_geometry.Tests.test_rotation_translation) ... ok
+test_seed_and_input_order (test_geometry.Tests.test_seed_and_input_order) ... ok
+test_single_specimen (test_geometry.Tests.test_single_specimen) ... ok
+test_units_and_empty_field (test_geometry.Tests.test_units_and_empty_field) ... ok
+test_variance_decomposition (test_geometry.Tests.test_variance_decomposition) ... ok
+test_weighting_and_multiplicity (test_geometry.Tests.test_weighting_and_multiplicity) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.320s
+
+OK

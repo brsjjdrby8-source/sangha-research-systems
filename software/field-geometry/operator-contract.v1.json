@@ -1,0 +1,68 @@
+{
+  "schema": "sangha.geometry.operator-contract.v1",
+  "operators": {
+    "validate": {
+      "input": [
+        "DatasetV1",
+        "ConfigV1"
+      ],
+      "effect": "read-only",
+      "refusal": [
+        "schema",
+        "calibration",
+        "identity",
+        "boundary"
+      ]
+    },
+    "measure": {
+      "input": [
+        "DatasetV1",
+        "ConfigV1"
+      ],
+      "output": [
+        "ObjectGeometryCSV",
+        "DirectionalWidthsNPY",
+        "ReceiptV1"
+      ],
+      "mode": "exhaustive polygon support"
+    },
+    "estimate": {
+      "input": [
+        "DatasetV1",
+        "ConfigV1"
+      ],
+      "output": [
+        "ResultsV1",
+        "StatisticsCSV",
+        "FieldsCSV",
+        "ReportHTML",
+        "Gates",
+        "ReceiptV1"
+      ],
+      "target": "observed 2D"
+    },
+    "verify": {
+      "input": [
+        "ReceiptV1",
+        "listed artifacts"
+      ],
+      "output": "byte integrity decision"
+    },
+    "replay": {
+      "input": [
+        "saved DatasetV1",
+        "saved ConfigV1"
+      ],
+      "output": "fresh run and scientific artifact parity"
+    }
+  },
+  "invariants": [
+    "objects remain grouped by specimen in bootstrap",
+    "no 3D inference without model adapter",
+    "no overwrite",
+    "no angular samples treated as biological replicates",
+    "all sampled fields retained including empty fields"
+  ],
+  "coverage": "approximate pointwise percentile bootstrap; no simultaneous or exact-coverage claim",
+  "promotion_gate": "new implementations must match the exhaustive reference before replacing it"
+}

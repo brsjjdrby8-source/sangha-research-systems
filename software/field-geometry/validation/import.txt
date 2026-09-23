@@ -1,0 +1,6 @@
+python3 -m sangha_geometry.cli from-labels "examples/labels.manifest.json" --out "runs/imported.dataset.json"
+{
+  "objects": 2,
+  "status": "PASS"
+}
+

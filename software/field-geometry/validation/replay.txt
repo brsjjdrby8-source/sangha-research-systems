@@ -1,0 +1,26 @@
+python3 -m sangha_geometry.cli verify "runs/demo"
+{
+  "scope": "listed output byte integrity; receipt itself is unsigned",
+  "status": "PASS"
+}
+
+python3 -m sangha_geometry.cli run "runs/demo/dataset.json" --config "runs/demo/config.json" --out "runs/demo-replay"
+{
+  "n_statistics": 140,
+  "out": "runs/demo-replay",
+  "status": "COMPLETE"
+}
+
+python3 scripts/compare_runs.py "runs/demo" "runs/demo-replay"
+{
+  "status": "PASS",
+  "scientific_output_byte_parity": {
+    "results.json": true,
+    "statistics.csv": true,
+    "objects.csv": true,
+    "fields.csv": true,
+    "directional_widths.npy": true,
+    "gates.json": true,
+    "report.html": true
+  }
+}

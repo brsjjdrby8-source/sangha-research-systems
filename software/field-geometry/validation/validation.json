@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "unit_tests": 17,
+  "demo": {
+    "synthetic": true,
+    "specimens": 12,
+    "fields": 36,
+    "objects": 180,
+    "statistics": 140,
+    "bootstrap_replicates": 2000
+  },
+  "make_replay": "scientific output byte parity PASS",
+  "make_measure": "PASS",
+  "make_import_labels": "PASS",
+  "editable_install": "PASS",
+  "not_validated": [
+    "biological performance",
+    "frequentist coverage by simulation",
+    "legacy QuPath parity",
+    "3D inference",
+    "simultaneous intervals"
+  ]
+}

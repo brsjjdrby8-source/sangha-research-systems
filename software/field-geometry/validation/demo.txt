@@ -1,0 +1,27 @@
+make run DATA=examples/demo.dataset.json CONFIG=examples/default.config.json OUT="runs/demo"
+make[1]: Entering directory '/workspace/scratch/61c9710a8434/sangha_field_geometry'
+python3 -m sangha_geometry.cli validate "examples/demo.dataset.json" --config "examples/default.config.json"
+{
+  "n_fields": 36,
+  "n_objects": 180,
+  "operator": "validate",
+  "status": "PASS"
+}
+
+python3 -m sangha_geometry.cli run "examples/demo.dataset.json" --config "examples/default.config.json" --out "runs/demo"
+{
+  "n_statistics": 140,
+  "out": "runs/demo",
+  "status": "COMPLETE"
+}
+
+make[1]: Leaving directory '/workspace/scratch/61c9710a8434/sangha_field_geometry'
+make verify OUT="runs/demo"
+make[1]: Entering directory '/workspace/scratch/61c9710a8434/sangha_field_geometry'
+python3 -m sangha_geometry.cli verify "runs/demo"
+{
+  "scope": "listed output byte integrity; receipt itself is unsigned",
+  "status": "PASS"
+}
+
+make[1]: Leaving directory '/workspace/scratch/61c9710a8434/sangha_field_geometry'

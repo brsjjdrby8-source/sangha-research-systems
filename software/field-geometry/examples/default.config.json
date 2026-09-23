@@ -1,0 +1,12 @@
+{
+  "schema": "sangha.geometry.config.v1",
+  "mode": "EXACT",
+  "max_order": 4,
+  "angles": 180,
+  "bootstrap": 2000,
+  "seed": 1729,
+  "confidence": 0.95,
+  "weighting": "specimen_equal",
+  "resampling": "specimen_cluster",
+  "target": "observed_2d"
+}

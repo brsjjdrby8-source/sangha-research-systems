@@ -1,0 +1,16 @@
+python3 -m sangha_geometry.cli validate "examples/demo.dataset.json" --config "examples/default.config.json"
+{
+  "n_fields": 36,
+  "n_objects": 180,
+  "operator": "validate",
+  "status": "PASS"
+}
+
+python3 -m sangha_geometry.cli measure "examples/demo.dataset.json" --config "examples/default.config.json" --out "runs/demo-measure"
+{
+  "n_fields": 36,
+  "n_objects": 180,
+  "operator": "measure",
+  "status": "PASS"
+}
+
