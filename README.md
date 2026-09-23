@@ -33,3 +33,10 @@ downloads are under `public/downloads/field-geometry/`.
 
 The deployed Cloudflare Worker serves `public/`, as specified by `wrangler.jsonc`.
 Preview the deployed surface with `python3 -m http.server --directory public 8080`.
+
+## Shared project layout
+
+Both project pages use `public/assets/projects.css`: a common reading width,
+responsive project navigation, keyboard skip link, action row, status strip,
+section anchors, and project-to-project navigation. New project pages should
+reuse this stylesheet and these landmarks rather than copying inline CSS.
