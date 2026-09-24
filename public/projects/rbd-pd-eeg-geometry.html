@@ -10,132 +10,28 @@
   <title>RBD → PD EEG Geometry — SANGHA Research Systems</title>
   <link rel="stylesheet" href="../assets/projects.css" />
   <style>
-    .decision{margin-top:32px;border:1px solid var(--ink);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-    .decision>div{padding:18px 20px;min-width:0}.decision>div+div{border-left:1px solid var(--hair)}
-    .decision strong{display:block;margin-top:8px;font:500 16px/1.45 var(--sans)}
-    .decision .supported strong{font-weight:600}.decision .unresolved strong{font-style:italic;font-weight:400}
-    .metrics{margin-top:24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-    .metric{padding:18px 18px 18px 0;min-width:0}.metric+.metric{padding-left:18px;border-left:1px solid var(--hair)}
-    .metric .value{margin-top:8px;font:400 clamp(23px,2.6vw,34px)/1 var(--sans);letter-spacing:-.03em}.metric .sub{margin-top:8px;font:400 11px/1.55 var(--mono);color:var(--muted)}
-    .axisbox{margin-top:28px;padding:22px;border:1px solid var(--hair);background:#e7e7e4}
-    .axisrow{display:grid;grid-template-columns:95px minmax(0,1fr) 120px;align-items:center;gap:16px;margin:16px 0;font:500 12px/1.4 var(--mono)}
-    .axisline{height:1px;background:var(--ink);position:relative}.axisline:after{content:"";position:absolute;right:-1px;top:-4px;border-left:8px solid var(--ink);border-top:4px solid transparent;border-bottom:4px solid transparent}
-    .axisrow.pd .axisline{width:54%}.axisrow.rbd .axisline{width:100%}.axisend{text-align:right;color:var(--muted)}
-    .question{margin:30px 0 0;max-width:64ch;padding:22px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:clamp(20px,2vw,28px);line-height:1.45;letter-spacing:-.02em}
-    .extension-grid{margin-top:26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--hair)}
-    .extension{padding:22px 20px 24px 0;border-bottom:1px solid var(--hair)}.extension+.extension{padding-left:20px;border-left:1px solid var(--hair)}
-    .extension h3{margin:10px 0;font-size:18px;line-height:1.35;font-weight:500}.extension p{margin:0;font:400 14px/1.7 var(--sans);color:#303335}
-    .ask{margin-top:26px;padding:20px;border-left:3px solid var(--ink);background:#e7e7e4;max-width:76ch}.ask p{margin:0;font:400 16px/1.7 var(--sans)}
-    @media(max-width:900px){.decision,.extension-grid{grid-template-columns:1fr}.decision>div+div,.extension+.extension{border-left:0;border-top:1px solid var(--hair);padding-left:0}.decision>div{padding:16px 0}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--hair)}.metric:nth-child(4){border-top:1px solid var(--hair)}.axisrow{grid-template-columns:65px minmax(0,1fr);gap:10px}.axisend{grid-column:2;text-align:left}.axisrow.pd .axisline{width:54%}}
+    .decision{margin-top:32px;border:1px solid var(--ink);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.decision>div{padding:18px 20px;min-width:0}.decision>div+div{border-left:1px solid var(--hair)}.decision strong{display:block;margin-top:8px;font:500 16px/1.45 var(--sans)}.decision .supported strong{font-weight:600}.decision .unresolved strong{font-style:italic;font-weight:400}.metrics{margin-top:24px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}.metric{padding:18px 18px 18px 0;min-width:0}.metric+.metric{padding-left:18px;border-left:1px solid var(--hair)}.metric .value{margin-top:8px;font:400 clamp(23px,2.6vw,34px)/1 var(--sans);letter-spacing:-.03em}.metric .sub{margin-top:8px;font:400 11px/1.55 var(--mono);color:var(--muted)}.axisbox{margin-top:28px;padding:22px;border:1px solid var(--hair);background:#e7e7e4}.axisrow{display:grid;grid-template-columns:95px minmax(0,1fr) 120px;align-items:center;gap:16px;margin:16px 0;font:500 12px/1.4 var(--mono)}.axisline{height:1px;background:var(--ink);position:relative}.axisline:after{content:"";position:absolute;right:-1px;top:-4px;border-left:8px solid var(--ink);border-top:4px solid transparent;border-bottom:4px solid transparent}.axisrow.pd .axisline{width:54%}.axisrow.rbd .axisline{width:100%}.axisend{text-align:right;color:var(--muted)}.question{margin:30px 0 0;max-width:64ch;padding:22px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:clamp(20px,2vw,28px);line-height:1.45;letter-spacing:-.02em}.extension-grid{margin-top:26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--hair)}.extension{padding:22px 20px 24px 0;border-bottom:1px solid var(--hair)}.extension+.extension{padding-left:20px;border-left:1px solid var(--hair)}.extension h3{margin:10px 0;font-size:18px;line-height:1.35;font-weight:500}.extension p{margin:0;font:400 14px/1.7 var(--sans);color:#303335}.ask{margin-top:26px;padding:20px;border-left:3px solid var(--ink);background:#e7e7e4;max-width:76ch}.ask p{margin:0;font:400 16px/1.7 var(--sans)}@media(max-width:900px){.decision,.extension-grid{grid-template-columns:1fr}.decision>div+div,.extension+.extension{border-left:0;border-top:1px solid var(--hair);padding-left:0}.decision>div{padding:16px 0}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--hair)}.metric:nth-child(4){border-top:1px solid var(--hair)}.axisrow{grid-template-columns:65px minmax(0,1fr);gap:10px}.axisend{grid-column:2;text-align:left}.axisrow.pd .axisline{width:54%}}
   </style>
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to project content</a>
 <main class="shell">
-  <header class="topbar">
-    <a href="../index.html" style="text-decoration:none">SANGHA Research Systems</a>
-    <div class="center">Project / 03</div>
-    <div class="right">Research note · 2026</div>
-  </header>
-
+  <header class="topbar"><a href="../index.html" style="text-decoration:none">SANGHA Research Systems</a><div class="center">Project / 03</div><div class="right">Research note · 2026</div></header>
   <section class="project">
     <aside class="rail">
       <div><div class="eyebrow">Neurophysiology / quantitative traits</div><div class="index">RBD / PD / geometry</div></div>
-      <nav class="project-nav" aria-label="Projects">
-        <a href="qupath-adaptive-whole-tissue.html">01 / QuPath whole tissue</a>
-        <a href="field-geometry.html">02 / Field Geometry</a>
-        <a href="rbd-pd-eeg-geometry.html" aria-current="page">03 / RBD → PD EEG</a>
-      </nav>
-      <nav class="section-nav" aria-label="On this page">
-        <a href="#overview">Overview</a>
-        <a href="#result">Result</a>
-        <a href="#problem">Identification problem</a>
-        <a href="#extensions">Already integrated</a>
-        <a href="#conversation">Open question</a>
-      </nav>
+      <nav class="project-nav" aria-label="Projects"><a href="qupath-adaptive-whole-tissue.html">01 / QuPath whole tissue</a><a href="field-geometry.html">02 / Field Geometry</a><a href="rbd-pd-eeg-geometry.html" aria-current="page">03 / RBD → PD EEG</a><a href="../essays/phenotype-is-compiled.html">Essay 01 / Phenotype Is Compiled</a></nav>
+      <nav class="section-nav" aria-label="On this page"><a href="#overview">Overview</a><a href="#result">Result</a><a href="#problem">Identification problem</a><a href="#extensions">Already integrated</a><a href="#conversation">Open question</a></nav>
       <div class="rail-bottom"><span class="rule"></span>A shared direction is evidence. A progression coordinate requires stronger invariance.</div>
     </aside>
-
     <article class="content" id="content" tabindex="-1">
-      <div class="hero" id="overview">
-        <div class="kicker">Cross-cohort EEG / disease-process phenotyping</div>
-        <h1>RBD → PD: a conserved EEG deformation?</h1>
-        <div class="collab">SANGHA Research Systems · Thomas Gross, PhD</div>
-        <p class="dek">Independent RBD/control and Parkinson's disease/control cohorts move in the same direction under a shared EEG observable. The directional result is reproducible. The stronger claim—that both observations lie on one disease-progressive coordinate—is not yet identified.</p>
-        <div class="actions"><a href="#result">Inspect the result ↓</a><a href="mailto:thomas@sangharesearch.systems?subject=RBD%20%E2%86%92%20PD%20EEG%20geometry">Discuss the problem →</a></div>
-        <div class="statusline"><span><strong>Direction</strong> · concordant</span><span><strong>Base alignment</strong> · strong</span><span><strong>Path invariance</strong> · unresolved</span></div>
-      </div>
-
-      <section class="flow" id="result">
-        <div class="label">Two cohorts / one observable</div>
-        <h2 class="section-title">The signal survives replication. The interpretation does not get a free pass.</h2>
-        <p class="detail">The shared observable is <strong>q = log(σ<sub>12–16 Hz</sub> / α<sub>8–12 Hz</sub>)</strong>, evaluated through the same deformation-estimation pipeline in CAP RBD/control sleep EEG and OpenNeuro ds008768 PD/control EEG.</p>
-
-        <div class="metrics" aria-label="Cross-cohort result summary">
-          <div class="metric"><div class="label">RBD Δq</div><div class="value">−0.511</div><div class="sub">median disease displacement</div></div>
-          <div class="metric"><div class="label">PD Δq</div><div class="value">−0.278</div><div class="sub">median disease displacement</div></div>
-          <div class="metric"><div class="label">cos θ</div><div class="value">0.933</div><div class="sub">base directional alignment</div></div>
-          <div class="metric"><div class="label">orthogonal residual</div><div class="value">0.360</div><div class="sub">relative residual magnitude</div></div>
-        </div>
-
-        <div class="axisbox" aria-label="Relative disease displacement diagram">
-          <div class="label">Shared sign / unequal magnitude</div>
-          <div class="axisrow rbd"><span>CONTROL</span><span class="axisline"></span><span class="axisend">RBD −0.511</span></div>
-          <div class="axisrow pd"><span>CONTROL</span><span class="axisline"></span><span class="axisend">PD −0.278</span></div>
-        </div>
-
-        <div class="decision" aria-label="Current inference">
-          <div class="supported"><div class="label">Supported</div><strong>Shared directional deformation</strong></div>
-          <div><div class="label">Observed</div><strong>Session / channel / operator sensitivity</strong></div>
-          <div class="unresolved"><div class="label">Not established</div><strong>Single progression coordinate</strong></div>
-        </div>
-      </section>
-
-      <section class="flow" id="problem">
-        <div class="label">Identification problem</div>
-        <h2 class="section-title">What turns concordance into a disease-process coordinate?</h2>
-        <p class="question">What statistical structure would justify treating these two concordant disease-associated deformations as observations of one latent progressive coordinate rather than two related but phenotype-specific contrasts?</p>
-        <p class="detail">The stronger object should survive more than sign agreement or a favorable base cosine. Candidate requirements include explicit operator equivariance, cohort-resampling stability, stable individual projection, constrained control → RBD → PD ordering, and decomposition of shared versus phenotype-specific residual structure.</p>
-      </section>
-
-      <section class="flow" id="extensions">
-        <div class="label">Already integrated downstream</div>
-        <h2 class="section-title">The next layers are not hypothetical—and they do not all agree.</h2>
-        <p class="detail">We have already pushed the phenotype geometry into adjacent trait and genomic representations. These are intentionally presented here as invitations to inspect the coupling, not as closure of the progression claim.</p>
-
-        <div class="extension-grid">
-          <div class="extension">
-            <div class="label">Trait coordinates</div>
-            <h3>Reference phenotype geometry is materialized.</h3>
-            <p>Typed quantitative coordinates can now be generated from reference trait geometry rather than added as an interpretive layer after the EEG result. This creates a direct path from deformation to multivariate phenotype architecture.</p>
-          </div>
-          <div class="extension">
-            <div class="label">Regional genetics</div>
-            <h3>Genomic structure sharpens under regionalization.</h3>
-            <p>An executed regional-GWAS analysis moved the RBD → PD alignment from 0.168 to 0.731 under the current canalization operator. The result is certified as descriptive / surrogate evidence, not causal identification.</p>
-          </div>
-          <div class="extension">
-            <div class="label">Cross-modal falsification</div>
-            <h3>The simplest scalar story fails.</h3>
-            <p>A homologous EEG/operator bridge produced mixed directional evidence rather than confirmation: cosine −0.366 with a 0.931 residual fraction. Whatever is shared across modalities is therefore richer than a single scalar canalization axis.</p>
-          </div>
-        </div>
-
-        <div class="ask"><p><strong>The useful tension:</strong> the base EEG contrast is strongly aligned; regional genomic geometry becomes more aligned under one transformation; the homologous cross-modal bridge rejects the simplest scalar interpretation. That is the point at which model choice—not another prettier correlation—becomes the scientific problem.</p></div>
-      </section>
-
-      <section class="flow" id="conversation">
-        <div class="label">Open conversation</div>
-        <h2 class="section-title">What is the right object to fit next?</h2>
-        <p class="detail">The immediate question is whether the shared component should be treated as a multivariate quantitative phenotype, a latent factor with operator-aware nuisance structure, a random-effects disease-process coordinate, or something else entirely. A convincing model should explain the concordant EEG direction, absorb measurement-operator sensitivity, and make falsifiable predictions about the genetic structure of the shared component versus its orthogonal residual.</p>
-        <p class="detail">We are especially interested in approaches that make the genetic decomposition part of the identification problem rather than a downstream annotation step.</p>
-        <div class="actions"><a href="mailto:thomas@sangharesearch.systems?subject=RBD%20%E2%86%92%20PD%20EEG%20geometry">thomas@sangharesearch.systems →</a><a href="https://github.com/brsjjdrby8-source/sangha-research-systems">SANGHA / GitHub →</a></div>
-      </section>
-
+      <div class="hero" id="overview"><div class="kicker">Cross-cohort EEG / disease-process phenotyping</div><h1>RBD → PD: a conserved EEG deformation?</h1><div class="collab">SANGHA Research Systems · Thomas Gross, PhD</div><p class="dek">Independent RBD/control and Parkinson's disease/control cohorts move in the same direction under a shared EEG observable. The directional result is reproducible. The stronger claim—that both observations lie on one disease-progressive coordinate—is not yet identified.</p><div class="actions"><a href="#result">Inspect the result ↓</a><a href="mailto:thomas@sangharesearch.systems?subject=RBD%20%E2%86%92%20PD%20EEG%20geometry">Discuss the problem →</a></div><div class="statusline"><span><strong>Direction</strong> · concordant</span><span><strong>Base alignment</strong> · strong</span><span><strong>Path invariance</strong> · unresolved</span></div></div>
+      <section class="flow" id="result"><div class="label">Two cohorts / one observable</div><h2 class="section-title">The signal survives replication. The interpretation does not get a free pass.</h2><p class="detail">The shared observable is <strong>q = log(σ<sub>12–16 Hz</sub> / α<sub>8–12 Hz</sub>)</strong>, evaluated through the same deformation-estimation pipeline in CAP RBD/control sleep EEG and OpenNeuro ds008768 PD/control EEG.</p><div class="metrics" aria-label="Cross-cohort result summary"><div class="metric"><div class="label">RBD Δq</div><div class="value">−0.511</div><div class="sub">median disease displacement</div></div><div class="metric"><div class="label">PD Δq</div><div class="value">−0.278</div><div class="sub">median disease displacement</div></div><div class="metric"><div class="label">cos θ</div><div class="value">0.933</div><div class="sub">base directional alignment</div></div><div class="metric"><div class="label">orthogonal residual</div><div class="value">0.360</div><div class="sub">relative residual magnitude</div></div></div><div class="axisbox" aria-label="Relative disease displacement diagram"><div class="label">Shared sign / unequal magnitude</div><div class="axisrow rbd"><span>CONTROL</span><span class="axisline"></span><span class="axisend">RBD −0.511</span></div><div class="axisrow pd"><span>CONTROL</span><span class="axisline"></span><span class="axisend">PD −0.278</span></div></div><div class="decision" aria-label="Current inference"><div class="supported"><div class="label">Supported</div><strong>Shared directional deformation</strong></div><div><div class="label">Observed</div><strong>Session / channel / operator sensitivity</strong></div><div class="unresolved"><div class="label">Not established</div><strong>Single progression coordinate</strong></div></div></section>
+      <section class="flow" id="problem"><div class="label">Identification problem</div><h2 class="section-title">What turns concordance into a disease-process coordinate?</h2><p class="question">What statistical structure would justify treating these two concordant disease-associated deformations as observations of one latent progressive coordinate rather than two related but phenotype-specific contrasts?</p><p class="detail">The stronger object should survive more than sign agreement or a favorable base cosine. Candidate requirements include explicit operator equivariance, cohort-resampling stability, stable individual projection, constrained control → RBD → PD ordering, and decomposition of shared versus phenotype-specific residual structure.</p></section>
+      <section class="flow" id="extensions"><div class="label">Already integrated downstream</div><h2 class="section-title">The next layers are not hypothetical—and they do not all agree.</h2><p class="detail">We have already pushed the phenotype geometry into adjacent trait and genomic representations. These are intentionally presented here as invitations to inspect the coupling, not as closure of the progression claim.</p><div class="extension-grid"><div class="extension"><div class="label">Trait coordinates</div><h3>Reference phenotype geometry is materialized.</h3><p>Typed quantitative coordinates can now be generated from reference trait geometry rather than added as an interpretive layer after the EEG result. This creates a direct path from deformation to multivariate phenotype architecture.</p></div><div class="extension"><div class="label">Regional genetics</div><h3>Genomic structure sharpens under regionalization.</h3><p>An executed regional-GWAS analysis moved the RBD → PD alignment from 0.168 to 0.731 under the current canalization operator. The result is certified as descriptive / surrogate evidence, not causal identification.</p></div><div class="extension"><div class="label">Cross-modal falsification</div><h3>The simplest scalar story fails.</h3><p>A homologous EEG/operator bridge produced mixed directional evidence rather than confirmation: cosine −0.366 with a 0.931 residual fraction. Whatever is shared across modalities is therefore richer than a single scalar canalization axis.</p></div></div><div class="ask"><p><strong>The useful tension:</strong> the base EEG contrast is strongly aligned; regional genomic geometry becomes more aligned under one transformation; the homologous cross-modal bridge rejects the simplest scalar interpretation. That is the point at which model choice—not another prettier correlation—becomes the scientific problem.</p></div></section>
+      <section class="flow" id="conversation"><div class="label">Open conversation</div><h2 class="section-title">What is the right object to fit next?</h2><p class="detail">The immediate question is whether the shared component should be treated as a multivariate quantitative phenotype, a latent factor with operator-aware nuisance structure, a random-effects disease-process coordinate, or something else entirely. A convincing model should explain the concordant EEG direction, absorb measurement-operator sensitivity, and make falsifiable predictions about the genetic structure of the shared component versus its orthogonal residual.</p><p class="detail">We are especially interested in approaches that make the genetic decomposition part of the identification problem rather than a downstream annotation step.</p><p class="detail">The broader representational argument behind this work is sketched in <a href="../essays/phenotype-is-compiled.html"><em>Phenotype Is Compiled</em> →</a></p><div class="actions"><a href="mailto:thomas@sangharesearch.systems?subject=RBD%20%E2%86%92%20PD%20EEG%20geometry">thomas@sangharesearch.systems →</a><a href="https://github.com/brsjjdrby8-source/sangha-research-systems">SANGHA / GitHub →</a></div></section>
       <p class="note"><strong>Inference boundary.</strong> These analyses are cross-sectional and cohort-comparative. They do not establish longitudinal conversion from RBD to PD, causality, or a unique latent disease trajectory.</p>
-
-      <nav class="project-pagination" aria-label="More projects"><a href="field-geometry.html">← 02 / Field Geometry</a><a href="../index.html">SANGHA home →</a></nav>
-      <footer class="footer"><span>SANGHA Research Systems / New York / distributed</span><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a></footer>
+      <nav class="project-pagination" aria-label="More projects"><a href="field-geometry.html">← 02 / Field Geometry</a><a href="../essays/phenotype-is-compiled.html">Essay 01 / Phenotype Is Compiled →</a></nav><footer class="footer"><span>SANGHA Research Systems / New York / distributed</span><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a></footer>
     </article>
   </section>
 </main>
