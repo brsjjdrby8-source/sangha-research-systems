@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Phenotype Is Compiled — a working essay on generative structure, inverse inference, and Theoretical & Computational Medicine." />
+  <meta name="theme-color" content="#efefed" />
+  <link rel="icon" href="../assets/sangha-icon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://sangharesearch.systems/essays/phenotype-is-compiled.html" />
+  <title>Phenotype Is Compiled — SANGHA Research Systems</title>
+  <link rel="stylesheet" href="../assets/projects.css" />
+  <style>
+    .essay-body{max-width:78ch}
+    .essay-body p{font:400 18px/1.78 var(--sans);margin:0 0 1.25em;color:#202224}
+    .essay-body p.lead{font-size:clamp(21px,2vw,28px);line-height:1.55;letter-spacing:-.018em;color:var(--ink)}
+    .essay-body h2{margin:56px 0 18px;padding-top:22px;border-top:1px solid var(--ink);font-size:clamp(25px,2.7vw,36px);line-height:1.2;font-weight:400;letter-spacing:-.025em}
+    .essay-body h3{margin:34px 0 12px;font-size:20px;line-height:1.35;font-weight:500}
+    .thesis{margin:32px 0;padding:24px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:clamp(26px,3vw,42px);line-height:1.2;letter-spacing:-.035em;max-width:24ch}
+    .equation{margin:28px 0;padding:22px;border:1px solid var(--hair);background:#e5e5e2;overflow:auto;font:500 14px/1.8 var(--mono);white-space:nowrap}
+    .aside{margin:30px 0;padding:20px 22px;border-left:3px solid var(--ink);background:#e7e7e4;max-width:70ch}
+    .aside p{margin:0;font:400 16px/1.7 var(--sans)}
+    .coda{margin-top:52px;padding:30px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:clamp(22px,2.3vw,32px);line-height:1.48;letter-spacing:-.02em;max-width:34ch}
+    .small{font:400 13px/1.7 var(--mono)!important;color:var(--muted)!important}
+    @media(max-width:760px){.essay-body p{font-size:17px}.equation{font-size:12px}.thesis{font-size:30px}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to essay</a>
+<main class="shell">
+  <header class="topbar">
+    <a href="../index.html" style="text-decoration:none">SANGHA Research Systems</a>
+    <div class="center">Essay / 01</div>
+    <div class="right">Working note · 2026</div>
+  </header>
+
+  <section class="project">
+    <aside class="rail">
+      <div><div class="eyebrow">Theoretical & Computational Medicine</div><div class="index">Notes toward representation</div></div>
+      <nav class="project-nav" aria-label="SANGHA work">
+        <a href="../projects/rbd-pd-eeg-geometry.html">Project 03 / RBD → PD EEG</a>
+        <a href="phenotype-is-compiled.html" aria-current="page">Essay 01 / Phenotype Is Compiled</a>
+      </nav>
+      <nav class="section-nav" aria-label="On this page">
+        <a href="#compiled">Compiled</a>
+        <a href="#inverse">Inverse problem</a>
+        <a href="#typed">Typed evidence</a>
+        <a href="#decompilations">Competing representations</a>
+        <a href="#intervention">Intervention</a>
+        <a href="#tandcm">T&CM</a>
+      </nav>
+      <div class="rail-bottom"><span class="rule"></span>The phenotype is evidence left by a process.</div>
+    </aside>
+
+    <article class="content" id="content" tabindex="-1">
+      <div class="hero">
+        <div class="kicker">Essay sketch / generative representation</div>
+        <h1>Phenotype Is Compiled</h1>
+        <div class="collab">SANGHA Research Systems · Thomas Gross, PhD</div>
+        <p class="dek">A phenotype looks like an observation because that is where we meet it. But the measured state is rarely primitive. It is a realization produced by a system.</p>
+        <div class="statusline"><span><strong>Status</strong> · working note</span><span><strong>Program</strong> · Theoretical & Computational Medicine</span><span><strong>Claim</strong> · conceptual, not clinical</span></div>
+      </div>
+
+      <div class="essay-body">
+        <section id="compiled">
+          <p class="lead">Blood pressure. Tremor. Sleep architecture. Plaque burden. Cognitive decline. A transcriptomic state. A diagnostic category.</p>
+          <p>These are things we can observe, measure and compare. That visibility makes them tempting places to begin an explanation. Yet the state we encounter at measurement is already downstream of genetic architecture, developmental history, regulatory state, environment, compensation, interactions among tissues, and the particular measurement operator through which we encounter it.</p>
+
+          <div class="thesis">Phenotype is not primitive. Phenotype is compiled.</div>
+
+          <p>The metaphor is deliberately imperfect. Organisms are not software and development does not execute a deterministic source file. The useful part is narrower: a realized phenotype is the product of transformations whose internal organization is not given to us merely because the output is observable.</p>
+
+          <div class="equation">genetic architecture ∧ development ∧ environment ∧ regulation ∧ history ∧ context → realized state → measurement</div>
+
+          <p>Different underlying organizations can converge on similar observed states. The same organization can realize differently across age, tissue, environment or perturbation. Compensation can preserve an endpoint while the machinery supporting it changes radically. Pathology can appear when that compensatory structure loses slack.</p>
+
+          <p>The scientific problem is therefore not only to associate variables with an observed phenotype. It is to recover enough of the generative structure beneath the phenotype to understand why this realization occurred, which other realizations were possible, and what would have to change for a different one to become reachable.</p>
+        </section>
+
+        <section id="inverse">
+          <h2>Inference is an inverse problem</h2>
+          <p>Quantitative genetics taught an early version of this lesson. Variance could be decomposed. Covariance could reveal structure that was not itself directly observed. Similarity among relatives could constrain latent components of trait architecture. The visible phenotype became evidence about a generative organization beneath it.</p>
+
+          <p>The same move recurs throughout medicine. We observe outputs and reason backward toward the structures capable of producing them.</p>
+
+          <div class="equation">measurement → candidate latent structure → generative representation → discriminating prediction</div>
+
+          <p>But inversion is not unique. A measured state can usually be explained by more than one model. A biomarker can be causally relevant without being a sufficient coordinate of disease. An intervention can move an outcome without proving that the manipulated target uniquely generates the clinical state. A reproducible association can be real while the representation attached to it is incomplete.</p>
+
+          <p>This is why explanation cannot be reduced to better measurement alone. Measurement constrains possible representations. It does not choose among them for us.</p>
+        </section>
+
+        <section id="typed">
+          <h2>Evidence has type</h2>
+          <p>Different forms of evidence answer different questions. A pathogenic germline variant can strongly constrain causal initiation while saying relatively little about late-stage reversibility. A longitudinal biomarker can constrain temporal order without establishing sufficiency. A randomized intervention can establish manipulability in a defined population while leaving the larger disease representation unresolved.</p>
+
+          <p>Evidence therefore has more structure than a scalar strength. Its scientific content includes what proposition it can constrain, through what design, in what system, at what scale, with what temporal scope and with what transport limits.</p>
+
+          <div class="aside"><p>A strong result can be strong evidence for one proposition and weak evidence for another. Inferential rigor includes preserving that distinction.</p></div>
+
+          <p>Once evidence is treated this way, the problem changes. We are no longer asking only whether the literature supports a preferred story. We are asking which parts of which candidate representations are actually licensed, which commitments remain unsupported, and which alternatives are still alive.</p>
+        </section>
+
+        <section id="decompilations">
+          <h2>Competing decompilations should be made to disagree</h2>
+          <p>A theory, in this sense, is not simply a narrative placed over observations. It is a provisional generative representation: explicit enough to name its state variables, relations, assumptions, observables and counterfactual consequences.</p>
+
+          <p>Several such representations may compile to observations that look nearly identical under the measurements already available. Another confirmatory experiment may then add very little. If every live model predicts the same result, obtaining that result again does not tell us which representation is adequate.</p>
+
+          <p>The useful experiment is the one that makes the surviving explanations disagree.</p>
+
+          <div class="equation">live explanations → divergent predictions → discriminating observation → revision</div>
+
+          <p>This is a different optimization target from accumulating support for the dominant narrative. It asks for information about model structure. The question becomes: what observation would most sharply partition the remaining possible worlds?</p>
+
+          <p>Failure becomes useful under this formulation. A failed prediction does not merely lower confidence in a favored model. It identifies which representational commitment could no longer survive contact with the evidence.</p>
+        </section>
+
+        <section id="intervention">
+          <h2>Intervention acts on the compiler</h2>
+          <p>If phenotype is compiled, treatment need not mean directly pushing a visible output toward a normal range. It may mean changing the constraints, state variables or interactions from which the pathological realization is generated.</p>
+
+          <p>A molecule can be a valid target without being a sufficient model of the disease. A biomarker can be an excellent readout without being the state variable that should organize intervention. A clinically important endpoint can be the thing we most care about while still being too downstream to serve as the sole representation of mechanism.</p>
+
+          <p>The intervention problem is therefore partly a representational problem: which coordinates describe the system well enough that changing them makes a different clinically meaningful realization reachable and stable?</p>
+
+          <div class="aside"><p>The target is not always the phenotype itself. Sometimes the target is the structure of the feasible set from which phenotype is realized.</p></div>
+        </section>
+
+        <section id="tandcm">
+          <h2>Theoretical & Computational Medicine</h2>
+          <p>Theoretical & Computational Medicine begins from the gap between evidence production and scientific action. Observations do not arrive with their ontology attached. They do not specify which entities should count as disease-state variables, which scales contain the relevant mechanism, which differences are equivalent, or which causal and dynamical structure should connect them.</p>
+
+          <p>Those operations can be made explicit.</p>
+
+          <p>T&CM treats theory as generative representation under empirical constraint and computation as the means by which that representation becomes executable. Evidence is typed according to the propositions it can bear on. Live explanations are kept explicit. Candidate experiments are selected for their ability to discriminate among them. The resulting claims are audited against the evidential warrant actually present.</p>
+
+          <div class="equation">represent → constrain → generate → execute → discriminate → audit → revise</div>
+
+          <p>This layer does not replace experiment, statistics or clinical judgment. It makes the transformation among them inspectable. A pipeline can reproduce a numerical result perfectly and still fail when that result is promoted into a stronger proposition than the design can support. Computational verification is therefore necessary but not sufficient; the result-to-claim transformation must also be auditable.</p>
+
+          <p>The larger objective is practical. A disease representation should be valuable because it improves what we do next: which experiment we choose, which uncertainty we refuse to hide, which intervention we attempt, which failed assumption we revise, and how quickly an attractive explanation can be falsified.</p>
+
+          <div class="coda"><strong>The phenotype is evidence left by a process.</strong><br><br>The task is not merely to describe that evidence more precisely, but to recover enough of the process that we can distinguish what is incidental from what is necessary, what is compensatory from what is causal, and what must change for another realization to become possible.</div>
+
+          <p class="small">This is a working conceptual note toward the SANGHA Theoretical & Computational Medicine program. It is not a clinical model, diagnostic framework or claim of biological finality.</p>
+        </section>
+      </div>
+
+      <nav class="project-pagination" aria-label="More SANGHA work"><a href="../projects/rbd-pd-eeg-geometry.html">← Project 03 / RBD → PD EEG</a><a href="../index.html">SANGHA home →</a></nav>
+      <footer class="footer"><span>SANGHA Research Systems / New York / distributed</span><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a></footer>
+    </article>
+  </section>
+</main>
+</body>
+</html>
