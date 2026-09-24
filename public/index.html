@@ -18,13 +18,7 @@
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
       --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
     }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}
-    body{font-family:var(--sans);overflow:hidden;background:var(--paper)}
-    a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
-    ::selection{background:var(--ink);color:var(--paper)}
-
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink)}body{font-family:var(--sans);overflow:hidden;background:var(--paper)}a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}::selection{background:var(--ink);color:var(--paper)}
     .frame{height:100vh;height:100svh;border-left:1px solid var(--hair);border-right:1px solid var(--hair);margin:0 clamp(0px,1.5vw,24px);display:grid;grid-template-rows:43px minmax(0,1fr) 43px;background:var(--paper)}
     .topbar{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:12px var(--pad);border-bottom:1px solid var(--hair);background:rgba(239,239,237,.96)}
     .topbar .brand,.topbar .meta{font:600 10px/1.2 var(--mono);letter-spacing:.22em;text-transform:uppercase}.topbar .meta{text-align:right;color:var(--muted)}.topbar .center{font:500 9px/1 var(--mono);letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
@@ -35,8 +29,7 @@
     .footer{border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 var(--pad);font:500 9px/1.35 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}.footer .contact{display:flex;align-items:center;gap:18px;color:var(--ink);text-transform:none;letter-spacing:.07em}
     @media (max-width:1180px) and (min-width:901px){.hero{grid-template-columns:minmax(145px,.56fr) minmax(0,1.55fr) minmax(250px,.94fr)}.rail{padding:24px 18px}.rail li{font-size:9px;letter-spacing:.14em}.rail .statement{font-size:10px}.hero-copy{padding:24px}.logic{font-size:10px}.name{margin:10vh 0 0}.wordmark{font-size:clamp(40px,4vw,56px);letter-spacing:.075em}.submark{font-size:14px;letter-spacing:.26em}.descriptor{font-size:10px;max-width:26ch}.scrollcue{font-size:8px;letter-spacing:.15em}.projectlink{font-size:7.5px;max-width:30ch}.coordinates{font-size:8px}}
     @media (max-width:900px){body{overflow:auto}.frame{min-height:100svh;height:auto;margin:0;grid-template-rows:43px auto 58px}.topbar{grid-template-columns:1fr auto}.topbar .center{display:none}.hero{grid-template-columns:1fr;grid-template-rows:auto minmax(52svh,1fr) auto}.rail{padding:11px 14px;border-right:0;border-bottom:1px solid var(--hair)}.rail ol{display:flex;flex-wrap:wrap;gap:4px 14px}.rail li{font-size:7.5px;line-height:1.45;letter-spacing:.1em;white-space:nowrap}.rail .statement{display:none}.markstage{min-height:52svh}.markwrap{width:min(76%,520px)}.coordinates{display:none}.hero-copy{grid-column:1;border-left:0;border-top:1px solid var(--hair);padding:20px;min-height:250px}.name{margin:0}.wordmark{font-size:clamp(42px,13.5vw,72px);letter-spacing:.075em}.descriptor{max-width:42ch;font-size:10px}.footer{padding:10px 13px;white-space:normal;align-items:flex-start;flex-direction:column;justify-content:center;gap:5px}.footer .contact{flex-wrap:wrap}}
-    @media (prefers-reduced-motion:reduce){#field{display:none}}
-    #field{display:none}
+    @media (prefers-reduced-motion:reduce){#field{display:none}}#field{display:none}
   </style>
 </head>
 <body>
@@ -48,24 +41,13 @@
       <div class="hero-copy">
         <div class="logic"><strong>∧ = AND</strong><br>recursive conjunction<br>as compositional grammar</div>
         <div class="name"><div class="wordmark" aria-label="SANGHA">S<span class="and">Λ</span>NGH<span class="and">Λ</span></div><div class="submark">Research Systems</div><div class="descriptor">Independent research systems engineering for scientific inference, experimental design, and theoretical medicine.</div></div>
-        <div class="scrollcue">Structure ∧ Intelligence ∧ Action<a class="projectlink" href="projects/qupath-adaptive-whole-tissue.html">Project 01 / Adaptive Whole-Tissue Measurement for QuPath →</a><a class="projectlink" href="projects/field-geometry.html">Project 02 / Field Geometry →</a><a class="projectlink" href="projects/rbd-pd-eeg-geometry.html">Project 03 / RBD → PD EEG Geometry →</a></div>
+        <div class="scrollcue">Structure ∧ Intelligence ∧ Action<a class="projectlink" href="projects/qupath-adaptive-whole-tissue.html">Project 01 / Adaptive Whole-Tissue Measurement for QuPath →</a><a class="projectlink" href="projects/field-geometry.html">Project 02 / Field Geometry →</a><a class="projectlink" href="projects/rbd-pd-eeg-geometry.html">Project 03 / RBD → PD EEG Geometry →</a><a class="projectlink" href="essays/phenotype-is-compiled.html">Essay 01 / Phenotype Is Compiled →</a></div>
       </div>
     </section>
     <footer class="footer"><div>New York / distributed</div><div class="contact"><span>Thomas Gross, PhD</span><a href="mailto:thomas@sangharesearch.systems">thomas@sangharesearch.systems</a></div></footer>
   </main>
 <script>
-(() => {
-  const canvas = document.getElementById('field');
-  if (!canvas || getComputedStyle(canvas).display === 'none') return;
-  const stage = document.getElementById('markstage');
-  const ctx = canvas.getContext('2d');
-  let mx = .5, my = .5, targetX = .5, targetY = .5;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function resize(){const r=stage.getBoundingClientRect();const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.max(1,Math.floor(r.width*dpr));canvas.height=Math.max(1,Math.floor(r.height*dpr));canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}
-  function tri(cx,cy,radius,skew,phase){const h=radius*1.12;const left=[cx-radius+skew*phase,cy+h*.58];const right=[cx+radius+skew*phase,cy+h*.58];const top=[cx+skew*phase*.25,cy-h*.72];ctx.beginPath();ctx.moveTo(top[0],top[1]);ctx.lineTo(right[0],right[1]);ctx.lineTo(left[0],left[1]);ctx.closePath()}
-  function draw(t){const r=stage.getBoundingClientRect(),w=r.width,h=r.height;ctx.clearRect(0,0,w,h);mx+=(targetX-mx)*.035;my+=(targetY-my)*.035;const cx=w*.5,cy=h*.49;const base=Math.min(w*.47,h*.39);const drift=(mx-.5)*8;const vdrift=(my-.5)*4;const time=reduced?0:t*.00006;ctx.lineWidth=.5;for(let i=0;i<14;i++){const p=i/13;const pulse=Math.sin(time+p*3.6)*.8;const radius=base*(1.08+p*.07)+pulse;const alpha=.025+(1-p)*.035;ctx.strokeStyle=`rgba(14,42,68,${alpha})`;tri(cx+drift*p,cy+vdrift*(1-p),radius,drift*.28,p);ctx.stroke()}requestAnimationFrame(draw)}
-  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();targetX=(e.clientX-r.left)/r.width;targetY=(e.clientY-r.top)/r.height});stage.addEventListener('pointerleave',()=>{targetX=.5;targetY=.5});addEventListener('resize',resize);resize();requestAnimationFrame(draw);
-})();
+(() => {const canvas=document.getElementById('field');if(!canvas||getComputedStyle(canvas).display==='none')return;const stage=document.getElementById('markstage');const ctx=canvas.getContext('2d');let mx=.5,my=.5,targetX=.5,targetY=.5;const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const r=stage.getBoundingClientRect();const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.max(1,Math.floor(r.width*dpr));canvas.height=Math.max(1,Math.floor(r.height*dpr));canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';ctx.setTransform(dpr,0,0,dpr,0,0)}function tri(cx,cy,radius,skew,phase){const h=radius*1.12;const left=[cx-radius+skew*phase,cy+h*.58];const right=[cx+radius+skew*phase,cy+h*.58];const top=[cx+skew*phase*.25,cy-h*.72];ctx.beginPath();ctx.moveTo(top[0],top[1]);ctx.lineTo(right[0],right[1]);ctx.lineTo(left[0],left[1]);ctx.closePath()}function draw(t){const r=stage.getBoundingClientRect(),w=r.width,h=r.height;ctx.clearRect(0,0,w,h);mx+=(targetX-mx)*.035;my+=(targetY-my)*.035;const cx=w*.5,cy=h*.49;base=Math.min(w*.47,h*.39);const drift=(mx-.5)*8;const vdrift=(my-.5)*4;const time=reduced?0:t*.00006;ctx.lineWidth=.5;for(let i=0;i<14;i++){const p=i/13;const pulse=Math.sin(time+p*3.6)*.8;const radius=base*(1.08+p*.07)+pulse;const alpha=.025+(1-p)*.035;ctx.strokeStyle=`rgba(14,42,68,${alpha})`;tri(cx+drift*p,cy+vdrift*(1-p),radius,drift*.28,p);ctx.stroke()}requestAnimationFrame(draw)}stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();targetX=(e.clientX-r.left)/r.width;targetY=(e.clientY-r.top)/r.height});stage.addEventListener('pointerleave',()=>{targetX=.5;targetY=.5});addEventListener('resize',resize);resize();requestAnimationFrame(draw)})();
 </script>
 </body>
 </html>
